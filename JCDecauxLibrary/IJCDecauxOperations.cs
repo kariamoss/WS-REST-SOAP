@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 
@@ -9,10 +10,14 @@ namespace JCDecauxLibrary
     {
         [OperationContract]
         //[AspNetCacheProfile("CacheFor60Seconds")]
-        String GetContracts(String key);
+        Town[] GetTowns(String key);
         
         [OperationContract]
         //[AspNetCacheProfile("CacheFor60Seconds")]
-        String GetStationsFromTown(String key, String town);
+        Station[] GetStationsFromTown(String key, String town);
+
+        [OperationContract]
+        //[AspNetCacheProfile("CacheFor60Seconds")]
+        Station GetAvailableVelib(String key, String station, string town);
     }
 }

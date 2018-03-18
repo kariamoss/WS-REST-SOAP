@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using JCDecauxLibrary;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,17 +18,17 @@ namespace Milleret
     {
         String key = "0fd193fbd29d80003eca2314c7a382831b9eb03f";
         String town;
+        Station[] stations;
         JCDecauxLibrary.JCDecauxOperationsClient client = new JCDecauxLibrary.JCDecauxOperationsClient();
 
         public Form1()
         {
             InitializeComponent();
 
-            String responseFromServer = client.GetContracts(key);
-            JArray jArray = JArray.Parse(responseFromServer);
-            foreach (JObject o in jArray)
+            Town[] towns = client.GetTowns(key);
+            foreach (Town o in towns)
             {
-                Villes.Items.Add(o.GetValue("name"));
+                Villes.Items.Add((o.Name));
             }
         }
 
@@ -45,30 +46,39 @@ namespace Milleret
         {
             Stations.Items.Clear();
             town = ((ListBox)sender).SelectedItem.ToString();
+
+            stations = client.GetStationsFromTown(key, town);
             
-            String responseFromServer = client.GetStationsFromTown(key, town);
-            JArray jArray = JArray.Parse(responseFromServer);
-            foreach (JObject o in jArray)
+            foreach (Station o in stations)
             {
-                Stations.Items.Add(o.GetValue("name"));
+                Stations.Items.Add(o.Name);
             }
         }
 
         private void Stations_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String station = ((ListBox)sender).SelectedItem.ToString();
-            String responseFromServer = client.GetStationsFromTown(key, town);
-
-            JArray jArray = JArray.Parse(responseFromServer);
-            foreach (JObject o in jArray)
+            LabelStation.Hide();
+            string stationSelected = ((ListBox)sender).SelectedItem as string;
+            Station station = null;
+            foreach(Station stationS in stations)
             {
-                if (o.GetValue("name").ToString().Equals(station))
+                if (stationS.Name == stationSelected)
                 {
-                    LabelStation.Text = "Il y a " + o.GetValue("available_bikes") + " vélos disponibles." + Environment.NewLine
-                        + "On peut encore y ranger " + o.GetValue("available_bike_stands") + " vélos.";
-                    LabelStation.Show();
+                    station = stationS;
                     break;
                 }
+            }
+            
+            if (station != null)
+            {
+                LabelStation.Text = "Il y a " + station.Available_bikes + " vélos disponibles." + Environment.NewLine
+                + "On peut encore y ranger " + station.Available_bike_stands + " vélos.";
+                LabelStation.Show();
+            }
+            else
+            {
+                LabelStation.Text = "Erreur interne, veuillez réessayer";
+                LabelStation.Show();
             }
         }
     }

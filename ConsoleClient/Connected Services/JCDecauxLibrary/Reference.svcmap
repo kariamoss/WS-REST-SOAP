@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a16d32bf-ae79-4f39-9b81-9b77a348b57b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cdf89384-a9ca-4873-a3b6-6c060d6e957a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="d2f891f0-b212-4b08-af8d-ab1aeca352a4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?xsd=xsd2" />
-    <MetadataFile FileName="JCDecauxOperations.wsdl" MetadataType="Wsdl" ID="3736c4bf-f2fc-4b98-a495-8ff22ff13de1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?wsdl" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="d2e5082a-cd33-4191-b36e-aa8b620de179" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?xsd=xsd0" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="2be6cdec-1d7a-4d93-926f-0a397c5285b1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?xsd=xsd1" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="a0aa84aa-91ff-44df-b198-d48387c1634a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?xsd=xsd2" />
+    <MetadataFile FileName="JCDecauxOperations.wsdl" MetadataType="Wsdl" ID="fda83a55-f228-4710-9c11-d79c183c9a2a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="97d111e2-b93b-415e-8958-1ae9f7262b49" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?xsd=xsd0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="972c4d39-73da-4257-9683-ddcc0221c9b6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service1/?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
