@@ -12,6 +12,9 @@ namespace JCDecauxLibrary
     {
         [DataMember]
         public string Name { get; set; }
+
+        // Used only for cache
+        public Station[] stations;
     }
 
     [DataContract]

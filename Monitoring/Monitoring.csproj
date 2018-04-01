@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A179F478-76BB-4CDF-91DB-20A3E33BD848}</ProjectGuid>
+    <ProjectGuid>{CCDEC813-0384-4CF0-BE31-848FEC7CCA41}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Milleret</RootNamespace>
-    <AssemblyName>Milleret</AssemblyName>
+    <RootNamespace>Monitoring</RootNamespace>
+    <AssemblyName>Monitoring</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,13 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,11 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\JCDecauxLibraryService\Reference.cs">
+    <Compile Include="Connected Services\JCDecauxAdminService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Data.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,21 +73,20 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Connected Services\JCDecauxLibraryService\item.xsd">
+    <None Include="Connected Services\JCDecauxAdminService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\JCDecauxLibraryService\item1.xsd">
+    <None Include="Connected Services\JCDecauxAdminService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\JCDecauxLibraryService\item2.xsd">
+    <None Include="Connected Services\JCDecauxAdminService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\JCDecauxLibraryService\JCDecauxOperations.wsdl" />
-    <None Include="packages.config" />
-    <None Include="Properties\DataSources\JCDecauxLibrary.Station.datasource" />
-    <None Include="Properties\DataSources\JCDecauxLibrary.Town.datasource" />
+    <None Include="Connected Services\JCDecauxAdminService\JCDecauxAdmin.wsdl" />
+    <None Include="Connected Services\JCDecauxAdminService\Monitoring.JCDecauxAdminService.AdminStats.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,33 +98,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\JCDecauxLibraryService\" />
+    <WCFMetadataStorage Include="Connected Services\JCDecauxAdminService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\JCDecauxLibraryService\configuration91.svcinfo" />
+    <None Include="Connected Services\JCDecauxAdminService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\JCDecauxLibraryService\configuration.svcinfo" />
+    <None Include="Connected Services\JCDecauxAdminService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\JCDecauxLibraryService\Reference.svcmap">
+    <None Include="Connected Services\JCDecauxAdminService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JCDecauxLibrary\JCDecauxLibrary.csproj">
-      <Project>{e7ee5361-7f37-43ae-8509-c0f75afff4f4}</Project>
-      <Name>JCDecauxLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

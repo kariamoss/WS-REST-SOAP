@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="JCDecauxAdmin" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service2/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service2/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service2/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JCDecauxLibrary" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IJCDecauxAdmin_GetStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStats" />
+  </wsdl:message>
+  <wsdl:message name="IJCDecauxAdmin_GetStats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJCDecauxAdmin_SetTimeCache_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetTimeCache" />
+  </wsdl:message>
+  <wsdl:message name="IJCDecauxAdmin_SetTimeCache_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetTimeCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJCDecauxAdmin_SetTimeForRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetTimeForRequests" />
+  </wsdl:message>
+  <wsdl:message name="IJCDecauxAdmin_SetTimeForRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetTimeForRequestsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IJCDecauxAdmin">
+    <wsdl:operation name="GetStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJCDecauxAdmin/GetStats" message="tns:IJCDecauxAdmin_GetStats_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJCDecauxAdmin/GetStatsResponse" message="tns:IJCDecauxAdmin_GetStats_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetTimeCache">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJCDecauxAdmin/SetTimeCache" message="tns:IJCDecauxAdmin_SetTimeCache_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJCDecauxAdmin/SetTimeCacheResponse" message="tns:IJCDecauxAdmin_SetTimeCache_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetTimeForRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJCDecauxAdmin/SetTimeForRequests" message="tns:IJCDecauxAdmin_SetTimeForRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJCDecauxAdmin/SetTimeForRequestsResponse" message="tns:IJCDecauxAdmin_SetTimeForRequests_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IJCDecauxAdmin" type="tns:IJCDecauxAdmin">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetStats">
+      <soap:operation soapAction="http://tempuri.org/IJCDecauxAdmin/GetStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTimeCache">
+      <soap:operation soapAction="http://tempuri.org/IJCDecauxAdmin/SetTimeCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTimeForRequests">
+      <soap:operation soapAction="http://tempuri.org/IJCDecauxAdmin/SetTimeForRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JCDecauxAdmin">
+    <wsdl:port name="IJCDecauxAdmin" binding="tns:IJCDecauxAdmin">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/JCDecauxLibrary/Service2/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

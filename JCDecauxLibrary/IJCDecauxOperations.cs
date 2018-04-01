@@ -10,14 +10,14 @@ namespace JCDecauxLibrary
     {
         [OperationContract]
         //[AspNetCacheProfile("CacheFor60Seconds")]
-        Town[] GetTowns(String key);
+        Town[] GetTowns();
         
         [OperationContract]
         //[AspNetCacheProfile("CacheFor60Seconds")]
-        Station[] GetStationsFromTown(String key, String town);
+        Station[] GetStationsFromTown(String town);
 
         [OperationContract]
         //[AspNetCacheProfile("CacheFor60Seconds")]
-        Station GetAvailableVelib(String key, String station, string town);
+        Station GetAvailableVelib(String station, string town);
     }
 }

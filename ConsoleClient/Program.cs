@@ -5,7 +5,6 @@ namespace ConsoleClient
 {
     class Program
     {
-        static String key = "0fd193fbd29d80003eca2314c7a382831b9eb03f";
         static JCDecauxOperationsClient client = new JCDecauxOperationsClient();
 
         static void help()
@@ -21,7 +20,7 @@ namespace ConsoleClient
             Station[] stations = null;
             try
             {
-                stations = client.GetStationsFromTown(key, town);
+                stations = client.GetStationsFromTown(town);
             }
             catch (Exception e)
             {
@@ -42,7 +41,7 @@ namespace ConsoleClient
 
         static bool showStations(String town, String station)
         {
-            Station stationRes = client.GetAvailableVelib(key, station, town);
+            Station stationRes = client.GetAvailableVelib(station, town);
 
             if (stationRes == null)
             {

@@ -55,7 +55,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache.cs" />
+    <Compile Include="AdminStats.cs" />
+    <Compile Include="IJCDecauxAdmin.cs" />
     <Compile Include="IJCDecauxOperations.cs" />
+    <Compile Include="JCDecauxAdmin.cs" />
     <Compile Include="JCDecauxOperations.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

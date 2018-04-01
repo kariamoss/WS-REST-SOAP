@@ -1,4 +1,5 @@
 ﻿using JCDecauxLibrary;
+using Milleret.JCDecauxLibraryService;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,15 @@ namespace Milleret
 {
     public partial class Form1 : Form
     {
-        String key = "0fd193fbd29d80003eca2314c7a382831b9eb03f";
         String town;
         Station[] stations;
-        JCDecauxLibrary.JCDecauxOperationsClient client = new JCDecauxLibrary.JCDecauxOperationsClient();
+        JCDecauxLibraryService.JCDecauxOperationsClient client = new JCDecauxLibraryService.JCDecauxOperationsClient();
 
         public Form1()
         {
             InitializeComponent();
 
-            Town[] towns = client.GetTowns(key);
+            Town[] towns = client.GetTowns();
             foreach (Town o in towns)
             {
                 Villes.Items.Add((o.Name));
@@ -47,7 +47,7 @@ namespace Milleret
             Stations.Items.Clear();
             town = ((ListBox)sender).SelectedItem.ToString();
 
-            stations = client.GetStationsFromTown(key, town);
+            stations = client.GetStationsFromTown(town);
             
             foreach (Station o in stations)
             {

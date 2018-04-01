@@ -8,39 +8,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JCDecauxLibrary {
+namespace Milleret.JCDecauxLibraryService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="JCDecauxLibrary.IJCDecauxOperations")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="JCDecauxLibraryService.IJCDecauxOperations")]
     public interface IJCDecauxOperations {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetTowns", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetTownsResponse")]
-        JCDecauxLibrary.Town[] GetTowns(string key);
+        JCDecauxLibrary.Town[] GetTowns();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetTowns", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetTownsResponse")]
-        System.Threading.Tasks.Task<JCDecauxLibrary.Town[]> GetTownsAsync(string key);
+        System.Threading.Tasks.Task<JCDecauxLibrary.Town[]> GetTownsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetStationsFromTown", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetStationsFromTownResponse")]
-        JCDecauxLibrary.Station[] GetStationsFromTown(string key, string town);
+        JCDecauxLibrary.Station[] GetStationsFromTown(string town);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetStationsFromTown", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetStationsFromTownResponse")]
-        System.Threading.Tasks.Task<JCDecauxLibrary.Station[]> GetStationsFromTownAsync(string key, string town);
+        System.Threading.Tasks.Task<JCDecauxLibrary.Station[]> GetStationsFromTownAsync(string town);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetAvailableVelib", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetAvailableVelibResponse")]
-        JCDecauxLibrary.Station GetAvailableVelib(string key, string station, string town);
+        JCDecauxLibrary.Station GetAvailableVelib(string station, string town);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetAvailableVelib", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetAvailableVelibResponse")]
-        System.Threading.Tasks.Task<JCDecauxLibrary.Station> GetAvailableVelibAsync(string key, string station, string town);
+        System.Threading.Tasks.Task<JCDecauxLibrary.Station> GetAvailableVelibAsync(string station, string town);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IJCDecauxOperationsChannel : JCDecauxLibrary.IJCDecauxOperations, System.ServiceModel.IClientChannel {
+    public interface IJCDecauxOperationsChannel : Milleret.JCDecauxLibraryService.IJCDecauxOperations, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class JCDecauxOperationsClient : System.ServiceModel.ClientBase<JCDecauxLibrary.IJCDecauxOperations>, JCDecauxLibrary.IJCDecauxOperations {
+    public partial class JCDecauxOperationsClient : System.ServiceModel.ClientBase<Milleret.JCDecauxLibraryService.IJCDecauxOperations>, Milleret.JCDecauxLibraryService.IJCDecauxOperations {
         
         public JCDecauxOperationsClient() {
         }
@@ -61,28 +61,28 @@ namespace JCDecauxLibrary {
                 base(binding, remoteAddress) {
         }
         
-        public JCDecauxLibrary.Town[] GetTowns(string key) {
-            return base.Channel.GetTowns(key);
+        public JCDecauxLibrary.Town[] GetTowns() {
+            return base.Channel.GetTowns();
         }
         
-        public System.Threading.Tasks.Task<JCDecauxLibrary.Town[]> GetTownsAsync(string key) {
-            return base.Channel.GetTownsAsync(key);
+        public System.Threading.Tasks.Task<JCDecauxLibrary.Town[]> GetTownsAsync() {
+            return base.Channel.GetTownsAsync();
         }
         
-        public JCDecauxLibrary.Station[] GetStationsFromTown(string key, string town) {
-            return base.Channel.GetStationsFromTown(key, town);
+        public JCDecauxLibrary.Station[] GetStationsFromTown(string town) {
+            return base.Channel.GetStationsFromTown(town);
         }
         
-        public System.Threading.Tasks.Task<JCDecauxLibrary.Station[]> GetStationsFromTownAsync(string key, string town) {
-            return base.Channel.GetStationsFromTownAsync(key, town);
+        public System.Threading.Tasks.Task<JCDecauxLibrary.Station[]> GetStationsFromTownAsync(string town) {
+            return base.Channel.GetStationsFromTownAsync(town);
         }
         
-        public JCDecauxLibrary.Station GetAvailableVelib(string key, string station, string town) {
-            return base.Channel.GetAvailableVelib(key, station, town);
+        public JCDecauxLibrary.Station GetAvailableVelib(string station, string town) {
+            return base.Channel.GetAvailableVelib(station, town);
         }
         
-        public System.Threading.Tasks.Task<JCDecauxLibrary.Station> GetAvailableVelibAsync(string key, string station, string town) {
-            return base.Channel.GetAvailableVelibAsync(key, station, town);
+        public System.Threading.Tasks.Task<JCDecauxLibrary.Station> GetAvailableVelibAsync(string station, string town) {
+            return base.Channel.GetAvailableVelibAsync(station, town);
         }
     }
 }

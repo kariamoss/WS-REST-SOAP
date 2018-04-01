@@ -140,22 +140,22 @@ namespace ConsoleClient.JCDecauxLibrary {
     public interface IJCDecauxOperations {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetTowns", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetTownsResponse")]
-        ConsoleClient.JCDecauxLibrary.Town[] GetTowns(string key);
+        ConsoleClient.JCDecauxLibrary.Town[] GetTowns();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetTowns", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetTownsResponse")]
-        System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Town[]> GetTownsAsync(string key);
+        System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Town[]> GetTownsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetStationsFromTown", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetStationsFromTownResponse")]
-        ConsoleClient.JCDecauxLibrary.Station[] GetStationsFromTown(string key, string town);
+        ConsoleClient.JCDecauxLibrary.Station[] GetStationsFromTown(string town);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetStationsFromTown", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetStationsFromTownResponse")]
-        System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Station[]> GetStationsFromTownAsync(string key, string town);
+        System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Station[]> GetStationsFromTownAsync(string town);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetAvailableVelib", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetAvailableVelibResponse")]
-        ConsoleClient.JCDecauxLibrary.Station GetAvailableVelib(string key, string station, string town);
+        ConsoleClient.JCDecauxLibrary.Station GetAvailableVelib(string station, string town);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxOperations/GetAvailableVelib", ReplyAction="http://tempuri.org/IJCDecauxOperations/GetAvailableVelibResponse")]
-        System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Station> GetAvailableVelibAsync(string key, string station, string town);
+        System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Station> GetAvailableVelibAsync(string station, string town);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -185,28 +185,28 @@ namespace ConsoleClient.JCDecauxLibrary {
                 base(binding, remoteAddress) {
         }
         
-        public ConsoleClient.JCDecauxLibrary.Town[] GetTowns(string key) {
-            return base.Channel.GetTowns(key);
+        public ConsoleClient.JCDecauxLibrary.Town[] GetTowns() {
+            return base.Channel.GetTowns();
         }
         
-        public System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Town[]> GetTownsAsync(string key) {
-            return base.Channel.GetTownsAsync(key);
+        public System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Town[]> GetTownsAsync() {
+            return base.Channel.GetTownsAsync();
         }
         
-        public ConsoleClient.JCDecauxLibrary.Station[] GetStationsFromTown(string key, string town) {
-            return base.Channel.GetStationsFromTown(key, town);
+        public ConsoleClient.JCDecauxLibrary.Station[] GetStationsFromTown(string town) {
+            return base.Channel.GetStationsFromTown(town);
         }
         
-        public System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Station[]> GetStationsFromTownAsync(string key, string town) {
-            return base.Channel.GetStationsFromTownAsync(key, town);
+        public System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Station[]> GetStationsFromTownAsync(string town) {
+            return base.Channel.GetStationsFromTownAsync(town);
         }
         
-        public ConsoleClient.JCDecauxLibrary.Station GetAvailableVelib(string key, string station, string town) {
-            return base.Channel.GetAvailableVelib(key, station, town);
+        public ConsoleClient.JCDecauxLibrary.Station GetAvailableVelib(string station, string town) {
+            return base.Channel.GetAvailableVelib(station, town);
         }
         
-        public System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Station> GetAvailableVelibAsync(string key, string station, string town) {
-            return base.Channel.GetAvailableVelibAsync(key, station, town);
+        public System.Threading.Tasks.Task<ConsoleClient.JCDecauxLibrary.Station> GetAvailableVelibAsync(string station, string town) {
+            return base.Channel.GetAvailableVelibAsync(station, town);
         }
     }
 }
