@@ -7,7 +7,7 @@ namespace ConsoleClient
     {
         static JCDecauxOperationsClient client = new JCDecauxOperationsClient();
 
-        static void help()
+        static void Help()
         {
             Console.WriteLine("Donnez dans un premier temps la ville où JCDecaux est implémenté \n" +
                 "Puis rentrez la station voulue \n" +
@@ -15,14 +15,14 @@ namespace ConsoleClient
                 "Vous pouvez afficher ce message avec la commande help");
         }
 
-        static bool showTowns(String town)
+        static bool ShowTowns(String town)
         {
             Station[] stations = null;
             try
             {
                 stations = client.GetStationsFromTown(town);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("La ville n'existe pas");
                 return false;
@@ -36,10 +36,14 @@ namespace ConsoleClient
                 }
                 return true;
             }
-            return false;
+            else
+            {
+                Console.WriteLine("La ville n'existe pas");
+                return false;
+            }
         }
 
-        static bool showStations(String town, String station)
+        static bool ShowStations(String town, String station)
         {
             Station stationRes = client.GetAvailableVelib(station, town);
 
@@ -67,10 +71,10 @@ namespace ConsoleClient
                     Console.WriteLine("Rentrez le nom d'un ville");
                     town = Console.ReadLine();
                     if (town == "quit") return;
-                    else if (town == "help") help();
+                    else if (town == "help") Help();
                     else
                     {
-                        if (showTowns(town)) break;
+                        if (ShowTowns(town)) break;
                     }
                 }
                 while (true)
@@ -78,10 +82,10 @@ namespace ConsoleClient
                     Console.WriteLine("Donnez le nom d'une station");
                     station = Console.ReadLine();
                     if (station == "quit") return;
-                    else if (station == "help") help();
+                    else if (station == "help") Help();
                     else
                     {
-                        if (showStations(town, station)) break;
+                        if (ShowStations(town, station)) break;
                     }
                 }
             }

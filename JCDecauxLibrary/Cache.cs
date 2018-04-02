@@ -39,7 +39,6 @@ namespace JCDecauxLibrary
             cacheStation.Rows.Add(townToAdd, DateTime.Now);
         }
         
-        // TODO Faire un getStations(String town) pour récupérer toutes les stations d'une ville
         public Station[] GetStations(String town)
         {
             foreach (DataRow row in cacheStation.Rows)
@@ -57,17 +56,22 @@ namespace JCDecauxLibrary
             }
             return null;
         }
-
-        // TODO Refaire ce getStation en prenant juste deux strings
+        
         public Station GetStation(String town, String station)
         {
             foreach (DataRow row in cacheStation.Rows)
             {
-                if (((Town)row["Town"]).Name == town && ((Station) row["Station"]).Name.ToLower().Contains(station.ToLower()))
+                if (((Town)row["Town"]).Name == town)
                 {
                     if (IsStillCached(row))
                     {
-                        return (Station)row["Station"];
+                        foreach(Station stationCached in ((Town)row["Town"]).stations)
+                        {
+                            if (stationCached.Name.ToLower().Contains(station.ToLower()))
+                            {
+                                return stationCached;
+                            }
+                        }
                     }
                     // Delete now useless row
                     row.Delete();

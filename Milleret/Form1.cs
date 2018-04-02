@@ -32,23 +32,15 @@ namespace Milleret
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Villes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Stations.Items.Clear();
+            
             town = ((ListBox)sender).SelectedItem.ToString();
 
             stations = client.GetStationsFromTown(town);
-            
+
+            Stations.Items.Clear();
             foreach (Station o in stations)
             {
                 Stations.Items.Add(o.Name);

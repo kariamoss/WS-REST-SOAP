@@ -17,7 +17,6 @@ namespace Monitoring
     {
         Data data;
         private Timer timer1;
-        int i = 0;
 
         public void InitTimer()
         {
@@ -39,27 +38,67 @@ namespace Monitoring
             TimeCached.Value = data.GetTimeCached();
             TimeRequests.Value = data.GetTimeForRequests();
         }
-        
-        private void RefreshChartAllRequests(Request[] requests) 
+
+        private void Clear_chart(Chart chart)
         {
-            double Percentage = 0.1;
+            foreach (var series in chart.Series)
+            {
+                series.Points.Clear();
+            }
+        }
+        
+        private void CreateRequestsChart(Request[] requests)
+        {
+            chart1.ChartAreas[0].AxisX.Maximum = data.GetTimeForRequests();
+            chart1.ChartAreas[0].AxisX.Minimum = 0;
+            double Percentage = 0;
             for (double i = 0; i <= data.GetTimeForRequests(); i = data.GetTimeForRequests() * Percentage)
             {
                 int nbRequests = 0;
-                DateTime beginOfTimeSection = DateTime.Now.AddSeconds(data.GetTimeForRequests() * (Percentage + 0.1));
-                DateTime endOfTimeSection = DateTime.Now.AddSeconds(i);
+                DateTime beginOfTimeSection = DateTime.Now.AddSeconds(-data.GetTimeForRequests() * (Percentage + 0.1));
+                DateTime endOfTimeSection = DateTime.Now.AddSeconds(-i);
                 foreach (Request req in requests)
                 {
                     if (req.Date >= beginOfTimeSection && req.Date < endOfTimeSection)
                     {
                         nbRequests++;
-                        //Debug.Print(nbRequests.ToString());
                     }
                 }
                 Percentage += 0.1;
-                //Debug.Print("i : " + i);
-                chart1.Series["Requêtes"].Points.AddXY(i, nbRequests);
+                Debug.Print("i : " + i);
+                chart1.Series[0].Points.AddXY(i, nbRequests);
             }
+        }
+
+        private void CreateCacheRequestsChart(Request[] requests)
+        {
+            chart3.ChartAreas[0].AxisX.Maximum = data.GetTimeForRequests();
+            chart3.ChartAreas[0].AxisX.Minimum = 0;
+            double Percentage = 0;
+            for (double i = 0; i <= data.GetTimeForRequests(); i = data.GetTimeForRequests() * Percentage)
+            {
+                int nbRequests = 0;
+                DateTime beginOfTimeSection = DateTime.Now.AddSeconds(-data.GetTimeForRequests() * (Percentage + 0.1));
+                DateTime endOfTimeSection = DateTime.Now.AddSeconds(-i);
+                foreach (Request req in requests)
+                {
+                    if (req.Date >= beginOfTimeSection && req.Date < endOfTimeSection && req.IsCached)
+                    {
+                        nbRequests++;
+                    }
+                }
+                Percentage += 0.1;
+                Debug.Print("i : " + i);
+                chart3.Series[0].Points.AddXY(i, nbRequests);
+            }
+        }
+
+        private void RefreshChartAllRequests(Request[] requests) 
+        {
+            Clear_chart(chart1);
+            CreateRequestsChart(requests);
+            Clear_chart(chart3);
+            CreateCacheRequestsChart(requests);
         }
 
         private void RefreshInfos()

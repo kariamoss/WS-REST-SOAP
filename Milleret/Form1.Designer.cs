@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.LabelStation = new System.Windows.Forms.Label();
+            this.loadingMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Villes
@@ -63,7 +64,6 @@
             this.label1.Size = new System.Drawing.Size(41, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Villes";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -73,7 +73,6 @@
             this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Stations";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // LabelStation
             // 
@@ -85,18 +84,30 @@
             this.LabelStation.Text = "Error";
             this.LabelStation.Visible = false;
             // 
+            // loadingMessage
+            // 
+            this.loadingMessage.AutoSize = true;
+            this.loadingMessage.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.loadingMessage.Location = new System.Drawing.Point(297, 11);
+            this.loadingMessage.Name = "loadingMessage";
+            this.loadingMessage.Size = new System.Drawing.Size(97, 17);
+            this.loadingMessage.TabIndex = 5;
+            this.loadingMessage.Text = "Chargement...";
+            this.loadingMessage.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(407, 373);
+            this.Controls.Add(this.loadingMessage);
             this.Controls.Add(this.LabelStation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Stations);
             this.Controls.Add(this.Villes);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Stations Disponibles";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,6 +120,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LabelStation;
+        private System.Windows.Forms.Label loadingMessage;
     }
 }
 
