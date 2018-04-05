@@ -1,11 +1,16 @@
-﻿using ConsoleClient.JCDecauxLibrary;
+﻿using ConsoleClient.JCDecauxServiceRef;
 using System;
+using System.ServiceModel;
 
 namespace ConsoleClient
 {
     class Program
     {
-        static JCDecauxOperationsClient client = new JCDecauxOperationsClient();
+        static VelibCallBack callBack = new VelibCallBack();
+        static InstanceContext iCntxt = new InstanceContext(callBack);
+
+        static JCDecauxServiceRef.JCDecauxOperationsClient client = new JCDecauxServiceRef.JCDecauxOperationsClient(iCntxt);
+
 
         static void Help()
         {
@@ -15,53 +20,24 @@ namespace ConsoleClient
                 "Vous pouvez afficher ce message avec la commande help");
         }
 
-        static bool ShowTowns(String town)
+        static Boolean ShowTowns(String town)
         {
-            Station[] stations = null;
-            try
-            {
-                stations = client.GetStationsFromTown(town);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("La ville n'existe pas");
-                return false;
-            }
-
-            if (stations != null)
-            {
-                foreach (Station o in stations)
-                {
-                    Console.WriteLine(o.Name);
-                }
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("La ville n'existe pas");
-                return false;
-            }
+            client.GetStationsFromTown(town);
+            return true;
         }
 
-        static bool ShowStations(String town, String station)
+        static void ShowStations(String town, String station)
         {
-            Station stationRes = client.GetAvailableVelib(station, town);
-
-            if (stationRes == null)
-            {
-                Console.WriteLine("La station n'existe pas");
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("" + "Il y a " + stationRes.Available_bikes + " vélos disponibles." + Environment.NewLine
-            + "On peut encore y ranger " + stationRes.Available_bike_stands + " vélos.");
-                return true;
-            }
+            client.GetStation(station, town);
         }
 
         static void Main(string[] args)
         {
+            client.SubscribeGetStationsFromTownEvent();
+            client.SubscribeGetStationEvent();
+            client.SubscribeGetStationFinishedEvent();
+            client.SubscribeGetStationsFromTownFinishedEvent();
+
             while (true)
             {
                 string town;
@@ -85,7 +61,8 @@ namespace ConsoleClient
                     else if (station == "help") Help();
                     else
                     {
-                        if (ShowStations(town, station)) break;
+                        ShowStations(town, station);
+                        break;
                     }
                 }
             }

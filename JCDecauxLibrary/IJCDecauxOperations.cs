@@ -5,19 +5,28 @@ using System.ServiceModel.Web;
 
 namespace JCDecauxLibrary
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IJCDecauxServiceEvent))]
     public interface IJCDecauxOperations
     {
         [OperationContract]
-        //[AspNetCacheProfile("CacheFor60Seconds")]
         Town[] GetTowns();
         
         [OperationContract]
-        //[AspNetCacheProfile("CacheFor60Seconds")]
-        Station[] GetStationsFromTown(String town);
+        void GetStationsFromTown(string town);
 
         [OperationContract]
-        //[AspNetCacheProfile("CacheFor60Seconds")]
-        Station GetAvailableVelib(String station, string town);
+        void GetStation(string station, string town);
+
+        [OperationContract]
+        void SubscribeGetStationsFromTownEvent();
+
+        [OperationContract]
+        void SubscribeGetStationsFromTownFinishedEvent();
+
+        [OperationContract]
+        void SubscribeGetStationEvent();
+
+        [OperationContract]
+        void SubscribeGetStationFinishedEvent();
     }
 }
